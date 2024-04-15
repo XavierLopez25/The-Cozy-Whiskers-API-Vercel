@@ -1,0 +1,27 @@
+{
+  "name": "api-the-cozy-whisker",
+  "version": "1.0.0",
+  "description": "API for The Cozy Whisker Cat Café restaurant.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/XavierLopez25/API-The-Cozy-Whisker.git"
+  },
+  "author": "XavierLopez25",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/XavierLopez25/API-The-Cozy-Whisker/issues"
+  },
+  "type": "module",
+  "homepage": "https://github.com/XavierLopez25/API-The-Cozy-Whisker#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pg": "^8.11.5"
+  }
+}
