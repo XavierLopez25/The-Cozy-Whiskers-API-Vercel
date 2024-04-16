@@ -38,13 +38,14 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 // Configura CORS
-app.use(
-  cors({
-    origin: 'http://localhost:5173', // Permitir sólo solicitudes de este origen
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
-    allowedHeaders: ['Content-Type', 'Authorization'], // Cabeceras permitidas
-  }),
-);
+const corsOptions = {
+  origin: 'http://localhost:5173', // o true para permitir cualquier origen
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 const port = 5000;
 
