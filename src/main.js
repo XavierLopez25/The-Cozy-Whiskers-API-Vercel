@@ -37,7 +37,14 @@ const app = express();
 // Habilitar el middleware para parsear JSON en el cuerpo de las solicitudes
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(cors());
+// Configura CORS
+app.use(
+  cors({
+    origin: 'http://localhost:5173', // Permitir sólo solicitudes de este origen
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
+    allowedHeaders: ['Content-Type', 'Authorization'], // Cabeceras permitidas
+  }),
+);
 
 const port = 5000;
 
