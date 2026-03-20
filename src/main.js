@@ -38,14 +38,28 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 // Configura CORS
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'https://the-cozy-whiskers.vercel.app',
+];
+
 const corsOptions = {
-  origin: 'http://localhost:5173', // o true para permitir cualquier origen
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+      return callback(null, true);
+    }
+    return callback(null, false);
+  },
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
+
 
 const port = 5000;
 
